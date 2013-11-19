@@ -23,7 +23,7 @@ func2(void)
     printf("func2: started\n");
     printf("func2: swapcontext(&uctx_func2, &uctx_func1)\n");
     if (swapcontext(&uctx_func2, &uctx_func1) == -1)
-        handle_error("swapcontext");
+       handle_error("swapcontext");
     printf("func2: returning\n");
 }
 
@@ -46,6 +46,7 @@ main(int argc, char *argv[])
     uctx_func2.uc_stack.ss_size = sizeof(func2_stack);
     /* Successor context is f1(), unless argc > 1 */
     uctx_func2.uc_link = (argc > 1) ? NULL : &uctx_func1;
+    // uctx_func2.uc_link = &uctx_func1;
     makecontext(&uctx_func2, func2, 0);
 
    printf("main: swapcontext(&uctx_main, &uctx_func2)\n");
