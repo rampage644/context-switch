@@ -1,5 +1,5 @@
 #!/bin/bash
-ZVSH="python ../zerovm-ports/zvsh.py"
+ZVSH="python zvsh"
 
 for file in tst-*
 do

@@ -20,7 +20,7 @@ OBJECTS+=$(patsubst %.c,%.o,$(wildcard src/*.c))
 TESTS=$(patsubst tests/%.c,%,$(wildcard tests/tst-*.c))
 
 all: ${NAME}.a ${TESTS}
-	./test.sh
+	@./test.sh
 
 ${NAME}.a: ${OBJECTS} 
 	$(AR) rcs ${NAME}.a ${OBJECTS} 
